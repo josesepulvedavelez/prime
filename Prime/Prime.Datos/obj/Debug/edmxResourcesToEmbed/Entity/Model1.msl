@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="primeModelStoreContainer" CdmEntityContainer="PrimeEntities">
+    <EntitySetMapping Name="Curso">
+      <EntityTypeMapping TypeName="primeModel.Curso">
+        <MappingFragment StoreEntitySet="Curso">
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="CursoId" ColumnName="CursoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Direccion">
+      <EntityTypeMapping TypeName="primeModel.Direccion">
+        <MappingFragment StoreEntitySet="Direccion">
+          <ScalarProperty Name="Pais" ColumnName="Pais" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+          <ScalarProperty Name="Barrio" ColumnName="Barrio" />
+          <ScalarProperty Name="Calle" ColumnName="Calle" />
+          <ScalarProperty Name="CasaApto" ColumnName="CasaApto" />
+          <ScalarProperty Name="DireccionId" ColumnName="DireccionId" />
+          <ScalarProperty Name="EstudianteId" ColumnName="EstudianteId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Estudiante">
+      <EntityTypeMapping TypeName="primeModel.Estudiante">
+        <MappingFragment StoreEntitySet="Estudiante">
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="Acudiente" ColumnName="Acudiente" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+          <ScalarProperty Name="EstudianteId" ColumnName="EstudianteId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Horario">
+      <EntityTypeMapping TypeName="primeModel.Horario">
+        <MappingFragment StoreEntitySet="Horario">
+          <ScalarProperty Name="Dia" ColumnName="Dia" />
+          <ScalarProperty Name="Hora" ColumnName="Hora" />
+          <ScalarProperty Name="Aula" ColumnName="Aula" />
+          <ScalarProperty Name="HorarioId" ColumnName="HorarioId" />
+          <ScalarProperty Name="EstudianteId" ColumnName="EstudianteId" />
+          <ScalarProperty Name="Curso" ColumnName="Curso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="DireccionDelete" FunctionName="primeModel.Store.DireccionDelete" />
+    <FunctionImportMapping FunctionImportName="DireccionInsert" FunctionName="primeModel.Store.DireccionInsert" />
+    <FunctionImportMapping FunctionImportName="DireccionSelect" FunctionName="primeModel.Store.DireccionSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="primeModel.DireccionSelect_Result">
+          <ScalarProperty Name="Pais" ColumnName="Pais" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+          <ScalarProperty Name="Barrio" ColumnName="Barrio" />
+          <ScalarProperty Name="Calle" ColumnName="Calle" />
+          <ScalarProperty Name="CasaApto" ColumnName="CasaApto" />
+          <ScalarProperty Name="DireccionId" ColumnName="DireccionId" />
+          <ScalarProperty Name="EstudianteId" ColumnName="EstudianteId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DireccionSelectByEstudianteId" FunctionName="primeModel.Store.DireccionSelectByEstudianteId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="primeModel.DireccionSelectByEstudianteId_Result">
+          <ScalarProperty Name="Pais" ColumnName="Pais" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+          <ScalarProperty Name="Barrio" ColumnName="Barrio" />
+          <ScalarProperty Name="Calle" ColumnName="Calle" />
+          <ScalarProperty Name="CasaApto" ColumnName="CasaApto" />
+          <ScalarProperty Name="DireccionId" ColumnName="DireccionId" />
+          <ScalarProperty Name="EstudianteId" ColumnName="EstudianteId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DireccionUpdate" FunctionName="primeModel.Store.DireccionUpdate" />
+  </EntityContainerMapping>
+</Mapping>

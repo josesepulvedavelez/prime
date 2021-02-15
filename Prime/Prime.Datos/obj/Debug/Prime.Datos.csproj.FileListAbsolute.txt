@@ -1,0 +1,12 @@
+C:\Users\Administrador\source\repos\Prime\Prime.Datos\bin\Debug\Prime.Datos.dll.config
+C:\Users\Administrador\source\repos\Prime\Prime.Datos\bin\Debug\Prime.Datos.dll
+C:\Users\Administrador\source\repos\Prime\Prime.Datos\bin\Debug\Prime.Datos.pdb
+C:\Users\Administrador\source\repos\Prime\Prime.Datos\bin\Debug\EntityFramework.dll
+C:\Users\Administrador\source\repos\Prime\Prime.Datos\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Administrador\source\repos\Prime\Prime.Datos\bin\Debug\EntityFramework.xml
+C:\Users\Administrador\source\repos\Prime\Prime.Datos\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Administrador\source\repos\Prime\Prime.Datos\obj\Debug\Prime.Datos.csprojAssemblyReference.cache
+C:\Users\Administrador\source\repos\Prime\Prime.Datos\obj\Debug\Prime.Datos.csproj.CoreCompileInputs.cache
+C:\Users\Administrador\source\repos\Prime\Prime.Datos\obj\Debug\Prime.Datos.csproj.CopyComplete
+C:\Users\Administrador\source\repos\Prime\Prime.Datos\obj\Debug\Prime.Datos.dll
+C:\Users\Administrador\source\repos\Prime\Prime.Datos\obj\Debug\Prime.Datos.pdb

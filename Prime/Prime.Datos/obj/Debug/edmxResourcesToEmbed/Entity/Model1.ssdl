@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="primeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Curso">
+    <Key>
+      <PropertyRef Name="CursoId" />
+    </Key>
+    <Property Name="Codigo" Type="varchar" MaxLength="10" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+    <Property Name="CursoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Direccion">
+    <Key>
+      <PropertyRef Name="DireccionId" />
+    </Key>
+    <Property Name="Pais" Type="varchar" MaxLength="50" />
+    <Property Name="Estado" Type="varchar" MaxLength="50" />
+    <Property Name="Ciudad" Type="varchar" MaxLength="50" />
+    <Property Name="Barrio" Type="varchar" MaxLength="100" />
+    <Property Name="Calle" Type="varchar" MaxLength="50" />
+    <Property Name="CasaApto" Type="varchar" MaxLength="20" />
+    <Property Name="DireccionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EstudianteId" Type="int" />
+  </EntityType>
+  <EntityType Name="Estudiante">
+    <Key>
+      <PropertyRef Name="EstudianteId" />
+    </Key>
+    <Property Name="Codigo" Type="varchar" MaxLength="10" />
+    <Property Name="Nombres" Type="varchar" MaxLength="100" />
+    <Property Name="Apellidos" Type="varchar" MaxLength="100" />
+    <Property Name="Acudiente" Type="varchar" MaxLength="200" />
+    <Property Name="Usuario" Type="varchar" MaxLength="20" />
+    <Property Name="Contraseña" Type="varchar" MaxLength="20" />
+    <Property Name="EstudianteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Horario">
+    <Key>
+      <PropertyRef Name="HorarioId" />
+    </Key>
+    <Property Name="Dia" Type="varchar" MaxLength="10" />
+    <Property Name="Hora" Type="time" Precision="7" />
+    <Property Name="Aula" Type="varchar" MaxLength="50" />
+    <Property Name="HorarioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EstudianteId" Type="int" />
+    <Property Name="Curso" Type="int" />
+  </EntityType>
+  <Association Name="FK__Direccion__Estud__3E52440B">
+    <End Role="Estudiante" Type="Self.Estudiante" Multiplicity="0..1" />
+    <End Role="Direccion" Type="Self.Direccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estudiante">
+        <PropertyRef Name="EstudianteId" />
+      </Principal>
+      <Dependent Role="Direccion">
+        <PropertyRef Name="EstudianteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Horario__Curso__3B75D760">
+    <End Role="Curso" Type="Self.Curso" Multiplicity="0..1" />
+    <End Role="Horario" Type="Self.Horario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Curso">
+        <PropertyRef Name="CursoId" />
+      </Principal>
+      <Dependent Role="Horario">
+        <PropertyRef Name="Curso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Horario__Estudia__3A81B327">
+    <End Role="Estudiante" Type="Self.Estudiante" Multiplicity="0..1" />
+    <End Role="Horario" Type="Self.Horario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estudiante">
+        <PropertyRef Name="EstudianteId" />
+      </Principal>
+      <Dependent Role="Horario">
+        <PropertyRef Name="EstudianteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="DireccionDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DireccionId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DireccionInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Pais" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="varchar" Mode="In" />
+    <Parameter Name="Ciudad" Type="varchar" Mode="In" />
+    <Parameter Name="Barrio" Type="varchar" Mode="In" />
+    <Parameter Name="Calle" Type="varchar" Mode="In" />
+    <Parameter Name="CasaApto" Type="varchar" Mode="In" />
+    <Parameter Name="DireccionId" Type="int" Mode="In" />
+    <Parameter Name="EstudianteId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DireccionSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="DireccionSelectByEstudianteId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EstudianteId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DireccionUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Pais" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="varchar" Mode="In" />
+    <Parameter Name="Ciudad" Type="varchar" Mode="In" />
+    <Parameter Name="Barrio" Type="varchar" Mode="In" />
+    <Parameter Name="Calle" Type="varchar" Mode="In" />
+    <Parameter Name="CasaApto" Type="varchar" Mode="In" />
+    <Parameter Name="DireccionId" Type="int" Mode="In" />
+    <Parameter Name="EstudianteId" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="primeModelStoreContainer">
+    <EntitySet Name="Curso" EntityType="Self.Curso" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Direccion" EntityType="Self.Direccion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Estudiante" EntityType="Self.Estudiante" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Horario" EntityType="Self.Horario" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Direccion__Estud__3E52440B" Association="Self.FK__Direccion__Estud__3E52440B">
+      <End Role="Estudiante" EntitySet="Estudiante" />
+      <End Role="Direccion" EntitySet="Direccion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Horario__Curso__3B75D760" Association="Self.FK__Horario__Curso__3B75D760">
+      <End Role="Curso" EntitySet="Curso" />
+      <End Role="Horario" EntitySet="Horario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Horario__Estudia__3A81B327" Association="Self.FK__Horario__Estudia__3A81B327">
+      <End Role="Estudiante" EntitySet="Estudiante" />
+      <End Role="Horario" EntitySet="Horario" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

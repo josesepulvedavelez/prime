@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="primeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Curso">
+    <Key>
+      <PropertyRef Name="CursoId" />
+    </Key>
+    <Property Name="Codigo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CursoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Horario" Relationship="Self.FK__Horario__Curso__3B75D760" FromRole="Curso" ToRole="Horario" />
+  </EntityType>
+  <EntityType Name="Direccion">
+    <Key>
+      <PropertyRef Name="DireccionId" />
+    </Key>
+    <Property Name="Pais" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Ciudad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Barrio" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Calle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CasaApto" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="DireccionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EstudianteId" Type="Int32" />
+    <NavigationProperty Name="Estudiante" Relationship="Self.FK__Direccion__Estud__3E52440B" FromRole="Direccion" ToRole="Estudiante" />
+  </EntityType>
+  <EntityType Name="Estudiante">
+    <Key>
+      <PropertyRef Name="EstudianteId" />
+    </Key>
+    <Property Name="Codigo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Nombres" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Apellidos" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Acudiente" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Contraseña" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="EstudianteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Direccion" Relationship="Self.FK__Direccion__Estud__3E52440B" FromRole="Estudiante" ToRole="Direccion" />
+    <NavigationProperty Name="Horario" Relationship="Self.FK__Horario__Estudia__3A81B327" FromRole="Estudiante" ToRole="Horario" />
+  </EntityType>
+  <EntityType Name="Horario">
+    <Key>
+      <PropertyRef Name="HorarioId" />
+    </Key>
+    <Property Name="Dia" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Hora" Type="Time" Precision="7" />
+    <Property Name="Aula" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="HorarioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EstudianteId" Type="Int32" />
+    <Property Name="Curso" Type="Int32" />
+    <NavigationProperty Name="Curso1" Relationship="Self.FK__Horario__Curso__3B75D760" FromRole="Horario" ToRole="Curso" />
+    <NavigationProperty Name="Estudiante" Relationship="Self.FK__Horario__Estudia__3A81B327" FromRole="Horario" ToRole="Estudiante" />
+  </EntityType>
+  <Association Name="FK__Horario__Curso__3B75D760">
+    <End Role="Curso" Type="Self.Curso" Multiplicity="0..1" />
+    <End Role="Horario" Type="Self.Horario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Curso">
+        <PropertyRef Name="CursoId" />
+      </Principal>
+      <Dependent Role="Horario">
+        <PropertyRef Name="Curso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Direccion__Estud__3E52440B">
+    <End Role="Estudiante" Type="Self.Estudiante" Multiplicity="0..1" />
+    <End Role="Direccion" Type="Self.Direccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estudiante">
+        <PropertyRef Name="EstudianteId" />
+      </Principal>
+      <Dependent Role="Direccion">
+        <PropertyRef Name="EstudianteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Horario__Estudia__3A81B327">
+    <End Role="Estudiante" Type="Self.Estudiante" Multiplicity="0..1" />
+    <End Role="Horario" Type="Self.Horario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estudiante">
+        <PropertyRef Name="EstudianteId" />
+      </Principal>
+      <Dependent Role="Horario">
+        <PropertyRef Name="EstudianteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PrimeEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Curso" EntityType="Self.Curso" />
+    <EntitySet Name="Direccion" EntityType="Self.Direccion" />
+    <EntitySet Name="Estudiante" EntityType="Self.Estudiante" />
+    <EntitySet Name="Horario" EntityType="Self.Horario" />
+    <AssociationSet Name="FK__Horario__Curso__3B75D760" Association="Self.FK__Horario__Curso__3B75D760">
+      <End Role="Curso" EntitySet="Curso" />
+      <End Role="Horario" EntitySet="Horario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Direccion__Estud__3E52440B" Association="Self.FK__Direccion__Estud__3E52440B">
+      <End Role="Estudiante" EntitySet="Estudiante" />
+      <End Role="Direccion" EntitySet="Direccion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Horario__Estudia__3A81B327" Association="Self.FK__Horario__Estudia__3A81B327">
+      <End Role="Estudiante" EntitySet="Estudiante" />
+      <End Role="Horario" EntitySet="Horario" />
+    </AssociationSet>
+    <FunctionImport Name="DireccionDelete">
+      <Parameter Name="DireccionId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DireccionInsert">
+      <Parameter Name="Pais" Mode="In" Type="String" />
+      <Parameter Name="Estado" Mode="In" Type="String" />
+      <Parameter Name="Ciudad" Mode="In" Type="String" />
+      <Parameter Name="Barrio" Mode="In" Type="String" />
+      <Parameter Name="Calle" Mode="In" Type="String" />
+      <Parameter Name="CasaApto" Mode="In" Type="String" />
+      <Parameter Name="DireccionId" Mode="In" Type="Int32" />
+      <Parameter Name="EstudianteId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DireccionSelect" ReturnType="Collection(primeModel.DireccionSelect_Result)" />
+    <FunctionImport Name="DireccionSelectByEstudianteId" ReturnType="Collection(primeModel.DireccionSelectByEstudianteId_Result)">
+      <Parameter Name="EstudianteId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DireccionUpdate">
+      <Parameter Name="Pais" Mode="In" Type="String" />
+      <Parameter Name="Estado" Mode="In" Type="String" />
+      <Parameter Name="Ciudad" Mode="In" Type="String" />
+      <Parameter Name="Barrio" Mode="In" Type="String" />
+      <Parameter Name="Calle" Mode="In" Type="String" />
+      <Parameter Name="CasaApto" Mode="In" Type="String" />
+      <Parameter Name="DireccionId" Mode="In" Type="Int32" />
+      <Parameter Name="EstudianteId" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="DireccionSelect_Result">
+    <Property Type="String" Name="Pais" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Estado" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Ciudad" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Barrio" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Calle" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CasaApto" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="DireccionId" Nullable="false" />
+    <Property Type="Int32" Name="EstudianteId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="DireccionSelectByEstudianteId_Result">
+    <Property Type="String" Name="Pais" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Estado" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Ciudad" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Barrio" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Calle" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CasaApto" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="DireccionId" Nullable="false" />
+    <Property Type="Int32" Name="EstudianteId" Nullable="true" />
+  </ComplexType>
+</Schema>

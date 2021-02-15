@@ -1,0 +1,6 @@
+C:\Users\Administrador\source\repos\Prime\Prime.Comun\bin\Debug\Prime.Comun.dll
+C:\Users\Administrador\source\repos\Prime\Prime.Comun\bin\Debug\Prime.Comun.pdb
+C:\Users\Administrador\source\repos\Prime\Prime.Comun\obj\Debug\Prime.Comun.csprojAssemblyReference.cache
+C:\Users\Administrador\source\repos\Prime\Prime.Comun\obj\Debug\Prime.Comun.csproj.CoreCompileInputs.cache
+C:\Users\Administrador\source\repos\Prime\Prime.Comun\obj\Debug\Prime.Comun.dll
+C:\Users\Administrador\source\repos\Prime\Prime.Comun\obj\Debug\Prime.Comun.pdb
